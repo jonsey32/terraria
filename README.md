@@ -1,4 +1,4 @@
-# docker-syncthing
+# docker-terraria
 
 This is a docker image for a [Terraria](https://terraria.org/) game server.
 
@@ -18,5 +18,3 @@ Start the server with the world outside of the container for storage
 *   `-p` will expose ports on the host and bind them to ports in the container.
 *   `-v` will mount your a directory on the host to a volume in the container.
 *   `raeven/terraria` the name of this docker image. 
-
-Each time you run the container it will generate new keys and a new device ID.
