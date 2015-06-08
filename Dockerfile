@@ -10,11 +10,11 @@ RUN echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo t
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y zip mono-complete supervisor
 
-ADD https://github.com/NyxStudios/TShock/releases/download/v4.2400/TShock.4.2.4.0128.zip /
+ADD https://github.com/NyxStudios/TShock/releases/download/v4.2.10/tshock_4.2.10.zip /
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN unzip TShock.4.2.4.0128.zip
-RUN rm TShock.4.2.4.0128.zip
+RUN unzip tshock_4.2.10.zip
+RUN rm tshock_4.2.10.zip
 
 EXPOSE 7777
 
