@@ -1,0 +1,8 @@
+[supervisord]
+nodaemon=true
+
+[program:terraria]
+directory=/tshock
+command=/usr/bin/mono /tshock/TerrariaServer.exe -ip {{getenv "IP"}} -port {{getenv "PORT"}} -maxplayers {{getenv "MAX_PLAYERS"}} -worldpath /world -logpath /logs -autocreate 3 -world /world/{{getenv "WORLD_NAME"}}.wld -configpath /config
+stdout_logfile=/logs/terraria_stdout.log
+stderr_logfile=/logs/terraria_stderr.log
