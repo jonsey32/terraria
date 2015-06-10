@@ -30,9 +30,9 @@ RUN rm tshock_4.2.10.zip
 COPY supervisord.tmpl /etc/confd/templates/supervisord.tmpl
 COPY supervisord.toml /etc/confd/conf.d/supervisord.toml
 
-#COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-#RUN /confd -onetime
+ADD run.sh /
+RUN chmod u+x /run.sh
 
 EXPOSE 7777
 
-#CMD ["/usr/bin/supervisord"]
+CMD ["/run.sh"]
