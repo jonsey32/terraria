@@ -23,9 +23,9 @@ RUN mkdir -p /etc/confd/conf.d
 RUN mkdir -p /etc/confd/templates
 
 # Download and install TShock software
-ADD https://github.com/NyxStudios/TShock/releases/download/v4.2.10/tshock_4.2.10.zip /
-RUN unzip tshock_4.2.10.zip -d /tshock
-RUN rm tshock_4.2.10.zip
+ADD https://github.com/NyxStudios/TShock/releases/download/v4.3.7/tshock_4.3.7-pre1.zip /
+RUN unzip tshock_4.3.7-pre1.zip -d /tshock
+RUN rm tshock_4.3.7-pre1.zip
 
 COPY supervisord.tmpl /etc/confd/templates/supervisord.tmpl
 COPY supervisord.toml /etc/confd/conf.d/supervisord.toml
