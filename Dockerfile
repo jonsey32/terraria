@@ -16,7 +16,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14
 
 # Update os and install required applications
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y zip mono-complete supervisor curl
+    apt-get install -y zip mono-complete supervisor curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install confd
 RUN curl -qL https://github.com/kelseyhightower/confd/releases/download/v0.9.0/confd-0.9.0-linux-amd64 -o /confd && chmod +x /confd && \
