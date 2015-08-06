@@ -10,12 +10,10 @@ ENV MAX_PLAYERS 16
 ENV IP 0.0.0.0
 ENV PORT 7777
 
-# Add mono repository
+# Add mono repository and update os and install required applications
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
-    echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
-
-# Update os and install required applications
-RUN apt-get update && apt-get upgrade -y && \
+    echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list && \
+    apt-get update && apt-get upgrade -y && \
     apt-get install -y zip mono-complete supervisor curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
