@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM debian:8
 
 MAINTAINER Emil Haugbergsmyr <emil@raeven.net>
 
@@ -12,9 +12,10 @@ ENV PORT 7777
 
 # Add mono repository and update os and install required applications
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
-    echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list && \
+    echo "deb http://download.mono-project.com/repo/debian wheezy main" | tee /etc/apt/sources.list.d/mono-xamarin.list && \
+    echo "deb http://download.mono-project.com/repo/debian wheezy-libjpeg62-compat main" | tee -a /etc/apt/sources.list.d/mono-xamarin.list && \
     apt-get update && apt-get upgrade -y && \
-    apt-get install -y zip mono-complete supervisor curl && \
+    apt-get install -yf zip mono-runtime libmono-profiler mono-devel mono-mcs mono-csharp-shell libmono-cil-dev supervisor curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
