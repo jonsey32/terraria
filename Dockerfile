@@ -2,7 +2,7 @@ FROM debian:8
 
 MAINTAINER Emil Haugbergsmyr <emil@raeven.net>
 
-VOLUME ["/world", "/config", "/logs", "/plugins"]
+VOLUME ["/world", "/config", "/logs"]
 
 ENV WORLD_NAME docker
 ENV WORLD_SIZE 3
@@ -26,8 +26,7 @@ RUN curl -qL https://github.com/kelseyhightower/confd/releases/download/v0.9.0/c
 # Download and install TShock software
 ADD https://github.com/NyxStudios/TShock/releases/download/v4.3.11/tshock_release.zip /
 RUN unzip tshock_release.zip -d /tshock && \
-    rm tshock_release.zip && \
-    ls -s /tshock/ServerPlugins /plugins    
+    rm tshock_release.zip
 
 COPY supervisord.tmpl /etc/confd/templates/supervisord.tmpl
 COPY supervisord.toml /etc/confd/conf.d/supervisord.toml
